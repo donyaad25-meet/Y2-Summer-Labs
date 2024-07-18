@@ -1,26 +1,36 @@
-from flask import Flask, jsonify, request, render_template, redirect, url_for
+from flask import Flask, render_template, request, url_for, redirect
 import random
+app = Flask(__name__)
+   
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+	if request.method=='POST':
+		birthmonth=request.form['birthmonth']
+		return redirect(url_for('fortune', birthmonth=birthmonth))
 
-app = Flask(  # Create a flask app
-	__name__,
-	template_folder='templates',  # Name of html file folder
-	static_folder='static'  # Name of directory for static files
-)
+	return render_template("home.html")
 
+@app.route('/fortune')
+def fortune():
+	fortunes_options=["You will succeed in your life", "You will finish your CS lab easily",
+	"Everyday in your life is a special occasion", "You will win the Oscar"
+	, "Cats will come to you when you pespes","You will always be surrounded by true friends", "Plan for many pleasures ahead"
+	,"Happy News is on its way", "You are kind and friendly","You will receive money from an unexpected source"]
+	random_fortune=random.choice(fortunes_options)
+	return render_template('fortune.html', fortune=random_fortune)
 
-username = "llo2ay"
-password = "123"
-facebook_friends=["Loai","Yonathan","Adan", "George", "Fouad", "Celina"]
+	index= len(birthmonth) % len(fortunes_options)
+	thefortunes=fortunes_options[index]
 
+	return render_template('fortune.html', fortune=thefortunes)
 
-@app.route('/')  # '/' for the default page
-def login():
-  return render_template('login.html')
-  
+@app.route('/userinput', methods=['POST', 'GET'])
+def userinput():
+	if request.method ==' GET ':
+		return render_template('form.html')
+	else :
+		name = request.form['birthmonth']	
+		return redirect(url_for('fortune'))
 
-
-
-if __name__ == "__main__":  # Makes sure this is the main process
-	app.run( # Starts the site
-    debug=True
-	)
+if __name__ == '__main__':
+    app.run(debug = True)   
