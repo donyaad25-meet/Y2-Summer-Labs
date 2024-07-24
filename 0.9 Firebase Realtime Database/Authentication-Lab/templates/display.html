@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>display q</title>
+	</head>
+
+	<body>
+		<h2>Display Quotes</h2>
+		<ul>
+			{% for quote in quotes.values %}
+			<li> {{ quote['text'] }}. By: {{quote['said_by']}} </li>
+			{% endfor%}
+		</ul>
+		
+		<a href= '/home'>submit another quote</a>
+		<br>
+		<a href= '/thanks'>see our thanks page!</a>
+	</body>
+</html>

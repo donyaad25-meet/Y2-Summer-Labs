@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>display</title>
+	</head>
+
+	<body>
+		<h2>Display Posts</h2>
+		<ul>
+			{% for post in posts.values() %}
+			<li> {{ post['showname'] }}. The link: {{post['home']}} </li>
+			{% endfor%}
+		</ul>
+		
+		<a href= '/home'>submit another quote</a>
+	</body>
+</html>
