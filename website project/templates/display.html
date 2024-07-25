@@ -2,16 +2,17 @@
 <html>
 	<head>
 		<title>display</title>
+		<link rel='stylesheet' href="{{ url_for('static', filename='style.css')}}">
 	</head>
 
 	<body>
 		<h2>Display Posts</h2>
 		<ul>
-			{% for post in posts.values() %}
-			<li> {{ post['showname'] }}. The link: {{post['home']}} </li>
+			{% for i,j in posts.items() %}
+			<li>Show name:  {{ j['showname'] }}<br> The link:{{j['homepage']}} <br>summary: {{j['summary']}} </li>
 			{% endfor%}
 		</ul>
 		
-		<a href= '/home'>submit another quote</a>
+		<a href= '/show'>submit another Gold But Gold show</a>
 	</body>
 </html>

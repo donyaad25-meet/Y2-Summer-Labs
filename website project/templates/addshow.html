@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Add show</title>
+		<link rel='stylesheet' href="{{ url_for('static', filename='style.css')}}">
 	</head>
 	
 	<body>
@@ -13,8 +14,7 @@
 		<input type="url" id="homepage" name="homepage">
 		<br>
 		<input type='text' name='summary' placeholder='Brief Summary'>
-	</form>
-	<form action="/show" method="POST">
+
 			<button type="submit">Submit</button>
 			
 		</form>
